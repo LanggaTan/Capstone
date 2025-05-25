@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fill Your Details - NutriTrack</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">Nutri<span>Track</span></div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="fill-details-container">
+        <div class="fill-details-form">
+          <h2>Fill up your details</h2>
+          <form>
+            <label for="fullname">Full name</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="fullname"
+                placeholder="Enter your name here"
+                required
+              />
+            </div>
+
+            <label for="dob">Date of birth</label>
+            <div class="input-group">
+              <input type="date" id="dob" required />
+            </div>
+
+            <label for="gender">Gender</label>
+            <div class="input-group gender-group">
+              <label for="male">
+                <input
+                  type="radio"
+                  id="male"
+                  name="gender"
+                  value="Male"
+                  checked
+                />
+                Male
+              </label>
+              <label for="female">
+                <input type="radio" id="female" name="gender" value="Female" />
+                Female
+              </label>
+            </div>
+
+            <label for="current-weight">Current weight</label>
+            <div class="input-group">
+              <input
+                type="number"
+                id="current-weight"
+                placeholder="Enter your current weight in kgs"
+                required
+              />
+            </div>
+
+            <label for="goal">Your goal</label>
+            <div class="input-group">
+              <select id="goal" required>
+                <option value="" disabled selected>Select your goal</option>
+                <option value="diet">Diet</option>
+                <option value="exercise">Exercise</option>
+                <option value="maintain">Maintain health</option>
+              </select>
+            </div>
+
+            <label for="height">Height</label>
+            <div class="input-group">
+              <input
+                type="number"
+                id="height"
+                placeholder="Enter your height in cms"
+                required
+              />
+            </div>
+
+            <button type="submit" class="submit-btn">Create my plan</button>
+          </form>
+        </div>
+
+        <div class="fill-details-image">
+          <img src="../assets/images/gambardepan.jpg" alt="Healthy Food" />
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
