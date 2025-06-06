@@ -44,11 +44,6 @@ nutritrack/
 
 1. **Clone repositori:**
 
-```bash
-git clone https://github.com/username/nutritrack.git
-cd nutritrack
-````
-
 2. **Install dependencies:**
 
 ```bash
