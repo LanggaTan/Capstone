@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
   <header>
     <nav>
@@ -21,7 +23,7 @@
     <section class="login-container">
       <div class="login-form">
         <h2>Sign In</h2>
-        <form>
+        <form id="login-form">
           <label for="email">Email</label>
           <div class="input-group">
             <input type="email" id="email" placeholder="abc@gmail.com" required>
@@ -49,7 +51,7 @@
             <button class="instagram"><img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="Instagram" /></button>
           </div>
 
-          <p class="signup-text">Don’t have an account? <a href="regis.html">Sign up</a>
+          <p class="signup-text">Don’t have an account? <a href="/pages/regis.html">Sign up</a></p>
         </form>
       </div>
 
@@ -58,5 +60,30 @@
       </div>
     </section>
   </main>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        alert(data.message);
+        localStorage.setItem('token', data.token);
+        window.location.href = 'home.html';
+      } else {
+        alert(data.message || 'Login gagal');
+      }
+    });
+  </script>
 </body>
+
 </html>
