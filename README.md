@@ -92,15 +92,7 @@ Untuk mengunduh semua dependency yang dibutuhkan dari `package.json`.
 
 ## 🧠 Integrasi Machine Learning (Planned)
 
-Kamu dapat menambahkan folder `ml/` untuk menyimpan file model dan skrip Python jika ingin menghubungkan aplikasi ini dengan Machine Learning. Contoh:
-
-```
-ml/
-├── model.pkl
-└── predict.py
-```
-
-Komunikasi dapat dilakukan via REST API tambahan atau `child_process` Node.js.
+masih otw ehehehe
 
 ---
 
