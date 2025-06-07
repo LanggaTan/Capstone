@@ -6,6 +6,8 @@ const Jwt = require('jsonwebtoken');
 const users = require('./users');
 
 const JWT_SECRET = 'rahasia_super_aman';
+const userDetails = {}; // Key: username, Value: detail pengguna
+
 
 // Tambah di atas init
 const validateUser = async (request, h) => {
@@ -130,6 +132,62 @@ const init = async () => {
             },
         },
     });
+
+    server.route({
+        method: 'POST',
+        path: '/api/fill-details',
+        options: {
+            pre: [{ method: validateUser }],
+            validate: {
+                payload: Joi.object({
+                    fullname: Joi.string().required(),
+                    dob: Joi.string().required(),
+                    gender: Joi.string().valid("Male", "Female").required(),
+                    weight: Joi.number().required(),
+                    goal: Joi.string().required(),
+                    height: Joi.number().required(),
+                }),
+                failAction: (request, h, error) => {
+                    return h.response({ status: 'fail', message: error.details[0].message }).code(400).takeover();
+                },
+            },
+            handler: async (request, h) => {
+                const { username } = request.user;
+                const { fullname, dob, gender, weight, goal, height } = request.payload;
+
+                userDetails[username] = {
+                    fullname,
+                    dob,
+                    gender,
+                    weight,
+                    goal,
+                    height,
+                };
+
+                return h.response({ status: 'success', message: 'Details saved successfully' }).code(201);
+            },
+        },
+    });
+
+    server.route({
+        method: 'GET',
+        path: '/api/user-details',
+        options: {
+            pre: [{ method: validateUser }],
+            handler: (request, h) => {
+                const { username } = request.user;
+                const detail = userDetails[username];
+
+                if (!detail) {
+                    return h.response({ status: 'fail', message: 'Detail not found' }).code(404);
+                }
+
+                return { status: 'success', data: detail };
+            },
+        },
+    });
+
+
 
 
     await server.start();

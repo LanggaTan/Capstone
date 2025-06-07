@@ -110,53 +110,101 @@ if (logoutButton) {
 // =====================
 // HANDLER FOR FILL DETAILS
 // =====================
-const fillDetailsForm = document.querySelector(".fill-details-form form");
-if (fillDetailsForm) {
-  fillDetailsForm.addEventListener("submit", async (e) => {
+const detailForm = document.querySelector(".fill-details-form form");
+if (detailForm) {
+  detailForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-
-    const token = localStorage.getItem("token");
-    if (!token) {
-      alert("Silakan login terlebih dahulu.");
-      window.location.href = "/pages/login.html";
-      return;
-    }
 
     const fullname = document.getElementById("fullname").value;
     const dob = document.getElementById("dob").value;
-    const gender = document.querySelector('input[name="gender"]:checked').value;
-    const currentWeight = document.getElementById("current-weight").value;
+    const gender = document.querySelector("input[name='gender']:checked").value;
+    const weight = parseFloat(document.getElementById("current-weight").value);
     const goal = document.getElementById("goal").value;
-    const height = document.getElementById("height").value;
+    const height = parseFloat(document.getElementById("height").value);
+
+    const token = localStorage.getItem("token");
 
     try {
       const response = await fetch("http://localhost:3000/api/fill-details", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          "Authorization": `Bearer ${token}`,
         },
-        body: JSON.stringify({
-          fullname,
-          dob,
-          gender,
-          weight: currentWeight,
-          goal,
-          height,
-        }),
+        body: JSON.stringify({ fullname, dob, gender, weight, goal, height }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
         alert("Data berhasil disimpan!");
-        window.location.href = "dashboard.html"; // Redirect ke dashboard
+        window.location.href = "dashboard.html";
       } else {
-        alert("Gagal menyimpan data: " + data.message);
+        alert("Gagal menyimpan: " + data.message);
       }
     } catch (error) {
-      alert("Terjadi kesalahan saat menyimpan data");
+      alert("Terjadi kesalahan saat menyimpan detail.");
       console.error(error);
     }
   });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const path = window.location.pathname;
+
+  if (path.includes("dashboard.html")) {
+    fetchUserDetails();
+  }
+});
+
+async function fetchUserDetails() {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    alert("You are not logged in!");
+    window.location.href = "login.html";
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:3000/api/user-details", {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      },
+    });
+
+    const result = await response.json();
+    if (result.status === "success") {
+      const data = result.data;
+
+      // Tampilkan di elemen <p>
+      document.querySelector(".info-item:nth-child(1) p").textContent = data.fullname;
+      document.querySelector(".info-item:nth-child(2) p").textContent = `${data.weight} kg`;
+      document.querySelector(".info-item:nth-child(3) p").textContent = calculateAge(data.dob) + " tahun";
+      document.querySelector(".info-item:nth-child(4) p").textContent = `${data.height} cm`;
+      document.querySelector(".info-item:nth-child(5) p").textContent = data.gender;
+      document.querySelector(".info-item:nth-child(6) p").textContent = data.goal;
+    } else {
+      alert("Data belum diisi!");
+    }
+  } catch (error) {
+    console.error("Gagal ambil detail:", error);
+  }
+}
+
+// Hitung umur dari DOB
+function calculateAge(dobString) {
+  const dob = new Date(dobString);
+  const today = new Date();
+  let age = today.getFullYear() - dob.getFullYear();
+  const m = today.getMonth() - dob.getMonth();
+
+  if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+    age--;
+  }
+
+  return age;
+}
+
+
