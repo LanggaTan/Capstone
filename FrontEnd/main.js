@@ -23,9 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (response.ok) {
           alert("Login berhasil!");
-          // Simpan token jika diperlukan: localStorage.setItem("token", data.token);
-          window.location.href = "home.html"; // redirect ke halaman utama
-        } else {
+          localStorage.setItem("token", data.token); // simpan token JWT
+          window.location.href = "dashboard.html"; // redirect ke halaman utama
+        }
+        else {
           alert("Login gagal: " + data.message);
         }
       } catch (error) {

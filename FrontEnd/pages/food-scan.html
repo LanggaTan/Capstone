@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NutriTrack - NutriScan</title>
+    <link rel="stylesheet" href="../assets/css/food-scan.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="nav">
+        <div class="logo">Nutri<span>Track🍎</span></div>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <nav class="nav-menu">
+          <a href="dashboard.html" class="nav-item">
+            <span class="nav-icon">📊</span>
+            Dashboard
+          </a>
+          <a href="#" class="nav-item active">
+            <span class="nav-icon">🔍</span>
+            NutriScan
+          </a>
+          <a href="#" class="nav-item">
+            <span class="nav-icon">👤</span>
+            Logout
+          </a>
+        </nav>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <div class="upload-container">
+          <div class="upload-section">
+            <h3>Product Image</h3>
+            <p class="upload-subtitle">Add the product main image</p>
+
+            <label
+              for="product-image"
+              class="additional-upload-area single-upload"
+            >
+              <div class="upload-icon">↑</div>
+              <p>Drag and drop file here OR click to upload</p>
+            </label>
+            <input
+              type="file"
+              id="product-image"
+              class="upload-input"
+              accept="image/*"
+            />
+          </div>
+        </div>
+        
+        <div> 
+          <button class="submit-btn">Submit</button>
+        </div>
+      
+        <!-- Footer -->
+        <div class="footer">
+          <div class="footer-logo">
+            <span>NutriTrack</span>
+            <span class="logo-icon">🍎</span>
+          </div>
+          <div class="social-icons">
+            <span class="social-icon">📘</span>
+            <span class="social-icon">📷</span>
+            <span class="social-icon">📧</span>
+          </div>
+          <p>© 2025 NutriTrack. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

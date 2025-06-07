@@ -1,140 +1,170 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NutriTrack - Dashboard</title>
-    <link rel="stylesheet" href="../assets/css/style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <div class="logo">
-          <h2>NutriTrack 🍎</h2>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriTrack - Dashboard</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo">
+        <h2>NutriTrack 🍎</h2>
+      </div>
+      <nav class="nav-menu">
+        <a href="#" class="nav-item active">
+          <span class="nav-icon">📊</span>
+          Dashboard
+        </a>
+        <a href="/pages/fill-details.html" class="nav-item">
+          <span class="nav-icon">🔍</span>
+          NutriScan
+        </a>
+        <a href="#" class="nav-item" onclick="logout()">
+          <span class="nav-icon">👤</span>
+          Logout
+        </a>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+      <!-- Personal Information -->
+      <div class="personal-info">
+        <h3>Personal Information</h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <label>Name</label>
+            <input type="text" placeholder="Enter product info" />
+          </div>
+          <div class="info-item">
+            <label>Weight</label>
+            <input type="text" placeholder="Enter product info" />
+          </div>
+          <div class="info-item">
+            <label>Age</label>
+            <input type="text" placeholder="Enter product info" />
+          </div>
+          <div class="info-item">
+            <label>Height</label>
+            <input type="text" placeholder="Enter product info" />
+          </div>
+          <div class="info-item">
+            <label>Gender</label>
+            <input type="text" placeholder="Enter product info" />
+          </div>
+          <div class="info-item">
+            <label>Goal</label>
+            <input type="text" placeholder="Enter product info" />
+          </div>
         </div>
-        <nav class="nav-menu">
-          <a href="#" class="nav-item active">
-            <span class="nav-icon">📊</span>
-            Dashboard
-          </a>
-          <a href="#" class="nav-item">
-            <span class="nav-icon">🔍</span>
-            NutriScan
-          </a>
-          <a href="#" class="nav-item">
-            <span class="nav-icon">👤</span>
-            Logout
-          </a>
-        </nav>
       </div>
 
-      <!-- Main Content -->
-      <div class="main-content">
-       
-        <!-- Personal Information -->
-        <div class="personal-info">
-          <h3>Personal Information</h3>
-          <div class="info-grid">
-            <div class="info-item">
-              <label>Name</label>
-              <input type="text" placeholder="Enter product info" />
-            </div>
-            <div class="info-item">
-              <label>Weight</label>
-              <input type="text" placeholder="Enter product info" />
-            </div>
-            <div class="info-item">
-              <label>Age</label>
-              <input type="text" placeholder="Enter product info" />
-            </div>
-            <div class="info-item">
-              <label>Height</label>
-              <input type="text" placeholder="Enter product info" />
-            </div>
-            <div class="info-item">
-              <label>Gender</label>
-              <input type="text" placeholder="Enter product info" />
-            </div>
-            <div class="info-item">
-              <label>Goal</label>
-              <input type="text" placeholder="Enter product info" />
-            </div>
+      <!-- Ringkasan Hari Ini -->
+      <div class="summary-section">
+        <button class="summary-btn">Ringkasan Hari Ini</button>
+
+        <div class="summary-cards">
+          <div class="summary-card">
+            <h4>Kalori</h4>
+          </div>
+          <div class="summary-card">
+            <h4>Nutrisi</h4>
+          </div>
+          <div class="summary-card">
+            <h4>Progress</h4>
           </div>
         </div>
+      </div>
 
-        <!-- Ringkasan Hari Ini -->
-        <div class="summary-section">
-          <button class="summary-btn">Ringkasan Hari Ini</button>
+      <!-- NutriScan History -->
+      <div class="history-section">
+        <button class="history-btn">NutriScan History</button>
 
-          <div class="summary-cards">
-            <div class="summary-card">
-              <h4>Kalori</h4>
-            </div>
-            <div class="summary-card">
-              <h4>Nutrisi</h4>
-            </div>
-            <div class="summary-card">
-              <h4>Progress</h4>
-            </div>
-          </div>
+        <div class="history-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Nama Makanan</th>
+                <th>Carbohydrate</th>
+                <th>Fat</th>
+                <th>Protein</th>
+                <th>Calories</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span class="food-icon">🥪</span>
+                  Sate
+                </td>
+                <td>#343636</td>
+                <td>₹ 1,699</td>
+                <td>1</td>
+                <td>₹ 1,699</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="food-icon">🍔</span>
+                  Burger
+                </td>
+                <td>#343636</td>
+                <td>₹ 259</td>
+                <td>2</td>
+                <td>₹ 518</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
 
-        <!-- NutriScan History -->
-        <div class="history-section">
-          <button class="history-btn">NutriScan History</button>
-
-          <div class="history-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>Nama Makanan</th>
-                  <th>Carbohydrate</th>
-                  <th>Fat</th>
-                  <th>Protein</th>
-                  <th>Calories</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <span class="food-icon">🥪</span>
-                    Sate
-                  </td>
-                  <td>#343636</td>
-                  <td>₹ 1,699</td>
-                  <td>1</td>
-                  <td>₹ 1,699</td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="food-icon">🍔</span>
-                    Burger
-                  </td>
-                  <td>#343636</td>
-                  <td>₹ 259</td>
-                  <td>2</td>
-                  <td>₹ 518</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      <!-- Footer -->
+      <div class="footer">
+        <div class="footer-logo">
+          <span>NutriTrack</span>
+          <span class="logo-icon">🍎</span>
         </div>
-
-        <!-- Footer -->
-        <div class="footer">
-          <div class="footer-logo">
-            <span>NutriTrack</span>
-            <span class="logo-icon">🍎</span>
-          </div>
-          <div class="social-icons">
-            <span class="social-icon">📘</span>
-            <span class="social-icon">📷</span>
-            <span class="social-icon">📧</span>
-          </div>
-          <p>© 2025 NutriTrack. All Rights Reserved.</p>
+        <div class="social-icons">
+          <span class="social-icon">📘</span>
+          <span class="social-icon">📷</span>
+          <span class="social-icon">📧</span>
         </div>
+        <p>© 2025 NutriTrack. All Rights Reserved.</p>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded", async function () {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      window.location.href = "/pages/login.html";
+      return;
+    }
+
+    const res = await fetch("/api/dashboard", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if (res.status !== 200) {
+      window.location.href = "/pages/login.html";
+    } else {
+      const data = await res.json();
+      document.body.innerHTML += `<p>${data.message}</p>`;
+    }
+  });
+</script>
+
+<script>
+  function logout() {
+    localStorage.removeItem("token");
+    window.location.href = "/pages/home.html";
+  }
+</script>
+
 </html>

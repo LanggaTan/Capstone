@@ -7,6 +7,23 @@ const users = require('./users');
 
 const JWT_SECRET = 'rahasia_super_aman';
 
+// Tambah di atas init
+const validateUser = async (request, h) => {
+    const authHeader = request.headers.authorization;
+    if (!authHeader) {
+        return h.response({ status: 'fail', message: 'Missing authorization header' }).code(401).takeover();
+    }
+
+    try {
+        const token = authHeader.replace('Bearer ', '');
+        const decoded = Jwt.verify(token, JWT_SECRET);
+        request.user = decoded; // bisa digunakan di handler
+        return h.continue;
+    } catch (err) {
+        return h.response({ status: 'fail', message: 'Invalid token' }).code(401).takeover();
+    }
+};
+
 const init = async () => {
     const server = Hapi.server({
         port: 3000,
@@ -26,7 +43,7 @@ const init = async () => {
         handler: {
             directory: {
                 path: '.',
-                index: ['pages/login.html'],
+                index: ['pages/home.html'],
             },
         },
     });
@@ -99,6 +116,21 @@ const init = async () => {
             };
         },
     });
+
+    // Tambah endpoint di server.js setelah login
+    server.route({
+        method: 'GET',
+        path: '/api/dashboard',
+        options: {
+            pre: [{ method: validateUser }],
+            handler: (request, h) => {
+                return {
+                    message: `Welcome ${request.user.username}! This is your dashboard.`,
+                };
+            },
+        },
+    });
+
 
     await server.start();
     console.log('Server running on %s', server.info.uri);
