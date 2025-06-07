@@ -1,3 +1,20 @@
+// ==========================
+// PROTEKSI HALAMAN TERLOGIN
+// ==========================
+document.addEventListener("DOMContentLoaded", () => {
+  const protectedPages = ["dashboard.html", "fill-details.html"];
+  const currentPage = window.location.pathname.split("/").pop();
+  const token = localStorage.getItem("token");
+
+  if (protectedPages.includes(currentPage) && !token) {
+    alert("Silakan login terlebih dahulu.");
+    window.location.href = "/pages/login.html";
+    return;
+  }
+
+  // ... (login/register/logout handler lanjutan di sini)
+});
+
 // =====================
 // HANDLER FOR LOGIN
 // =====================
