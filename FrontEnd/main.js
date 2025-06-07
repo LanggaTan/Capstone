@@ -107,3 +107,56 @@ if (logoutButton) {
     window.location.href = "/pages/home.html";
   });
 }
+// =====================
+// HANDLER FOR FILL DETAILS
+// =====================
+const fillDetailsForm = document.querySelector(".fill-details-form form");
+if (fillDetailsForm) {
+  fillDetailsForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Silakan login terlebih dahulu.");
+      window.location.href = "/pages/login.html";
+      return;
+    }
+
+    const fullname = document.getElementById("fullname").value;
+    const dob = document.getElementById("dob").value;
+    const gender = document.querySelector('input[name="gender"]:checked').value;
+    const currentWeight = document.getElementById("current-weight").value;
+    const goal = document.getElementById("goal").value;
+    const height = document.getElementById("height").value;
+
+    try {
+      const response = await fetch("http://localhost:3000/api/fill-details", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          fullname,
+          dob,
+          gender,
+          weight: currentWeight,
+          goal,
+          height,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("Data berhasil disimpan!");
+        window.location.href = "dashboard.html"; // Redirect ke dashboard
+      } else {
+        alert("Gagal menyimpan data: " + data.message);
+      }
+    } catch (error) {
+      alert("Terjadi kesalahan saat menyimpan data");
+      console.error(error);
+    }
+  });
+}
