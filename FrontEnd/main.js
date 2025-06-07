@@ -78,3 +78,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+// =====================
+// HANDLER FOR LOGOUT
+// =====================
+const logoutButton = document.querySelector(".logout-link");
+if (logoutButton) {
+  logoutButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    alert("Logout berhasil!");
+    window.location.href = "/pages/home.html";
+  });
+}
