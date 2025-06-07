@@ -43,7 +43,7 @@ const init = async () => {
         handler: {
             directory: {
                 path: '.',
-                index: ['pages/home.html'],
+                index: ['/pages/home.html'],
             },
         },
     });
