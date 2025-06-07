@@ -1,0 +1,166 @@
+/*regis */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background-color: #f7f7f7;
+  color: #333;
+}
+
+header {
+  background: #99BC85;
+  padding: 1rem 2rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4c934c;
+}
+
+.logo span {
+  color: #dd4b39;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fff;
+}
+
+.signup-form {
+  flex: 1;
+  padding: 2rem;
+  background: #fefcf9;
+}
+
+.signup-form h2 {
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  color: #222;
+}
+
+form label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  font-weight: 600;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.8rem 2.5rem 0.8rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-group i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+.sign-up-btn {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #8cbf74;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.sign-up-btn:hover {
+  background-color: #76a863;
+  transition: background-color 0.3s ease;
+}
+
+.login-text {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.95rem;
+}
+
+.login-text a {
+  color: #4c934c;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signup-image {
+  flex: 1;
+  overflow: hidden;
+}
+
+.signup-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .signup-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .signup-image {
+    order: -1;
+    height: 200px;
+  }
+
+  .signup-image img {
+    object-fit: cover;
+    height: 100%;
+  }
+
+  .signup-form {
+    padding: 1.5rem 1rem;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+}
