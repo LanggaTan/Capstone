@@ -1,0 +1,1 @@
+module.exports = 'rahasia_super_aman';
