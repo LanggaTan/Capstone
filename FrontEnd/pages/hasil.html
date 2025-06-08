@@ -7,33 +7,11 @@
     <link rel="stylesheet" href="../assets/css/hasil.css" />
   </head>
   <body>
-    <!-- Header -->
-    <header class="header">
-      <div class="nav">
-        <div class="logo">Nutri<span>Track🍎</span></div>
-      </div>
-    </header>
+    <div id="header"></div>
 
     <!-- Main Container -->
     <div class="container">
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <nav class="nav-menu">
-          <a href="dashboard.html" class="nav-item">
-            <span class="nav-icon">📊</span> Dashboard
-          </a>
-          <a href="#" class="nav-item active">
-            <span class="nav-icon">🔍</span> NutriScan
-          </a>
-          <a href="profil.html" class="nav-item">
-            <span class="nav-icon">👤</span> Profil
-          </a>
-          <a href="logout.html" class="nav-item">
-            <span class="nav-icon">↩️</span>
-            Logout
-          </a>
-        </nav>
-      </aside>
+      <div id="sidebar"></div>
 
       <!-- Main Content -->
       <main class="main-content">
@@ -51,25 +29,21 @@
               <input type="text" placeholder="Nasi Goreng" disabled />
             </div>
             <div class="result-field">
-              <label>Komponen:</label>
-              <input
-                type="text"
-                placeholder="Nasi, Telur, Minyak, Garam"
-                disabled
-              />
-            </div>
-            <div class="result-field">
-              <label>Nutrisi:</label>
-              <input
-                type="text"
-                placeholder="Karbohidrat, Protein, Lemak"
-                disabled
-              />
-            </div>
-            <div class="result-field">
-              <label>Kalori:</label>
+              <label>Total Kalori:</label>
               <input type="text" placeholder="350 kkal" disabled />
             </div>
+          </div>
+
+          <!-- Komponen Makanan -->
+          <div class="components-section">
+            <h4>Komponen & Kalori:</h4>
+            <ul class="components-list">
+              <!-- Ini nanti akan di-generate lewat JavaScript -->
+              <li>Nasi - 200 kkal</li>
+              <li>Telur - 90 kkal</li>
+              <li>Minyak - 50 kkal</li>
+              <li>Garam - 10 kkal</li>
+            </ul>
           </div>
 
           <form action="rekomendasi.html" method="GET">
@@ -78,47 +52,8 @@
           </form>
         </section>
 
-        <!-- Upload Form -->
-        <section class="upload-container" style="margin-top: 40px">
-          <div class="upload-section">
-            <h3>Product Image</h3>
-            <p class="upload-subtitle">Add the product main image</p>
-
-            <label
-              for="product-image"
-              class="additional-upload-area single-upload"
-            >
-              <div class="upload-icon">↑</div>
-              <p>Uanggah Satu Gambar Makanan</p>
-            </label>
-            <input
-              type="file"
-              id="product-image"
-              class="upload-input"
-              accept="image/*"
-            />
-          </div>
-        </section>
-
-        <!-- Submit Button -->
-        <form action="hasil.html" method="GET">
-          <!-- field input bisa hidden atau ditampilkan -->
-          <button type="submit" class="submit-btn">Submit</button>
-        </form>
-
-        <!-- Footer -->
-        <footer class="footer">
-          <div class="footer-logo">
-            <span>NutriTrack</span>
-            <span class="logo-icon">🍎</span>
-          </div>
-          <div class="social-icons">
-            <span class="social-icon">📘</span>
-            <span class="social-icon">📷</span>
-            <span class="social-icon">📧</span>
-          </div>
-          <p>© 2025 NutriTrack. All Rights Reserved.</p>
-        </footer>
+        <div id="footer"></div>
+        <script src="index.js"></script>
       </main>
     </div>
   </body>

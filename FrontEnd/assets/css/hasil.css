@@ -363,3 +363,30 @@ body {
         margin-top: 0;
     }
 }
+
+.components-section {
+  margin-top: 20px;
+  background-color: #F9F9F9;
+  border: 1.5px solid #99BC85;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.components-section h4 {
+  color: #557A46;
+  margin-bottom: 10px;
+}
+
+.components-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.components-list li {
+  background-color: #E4EFE7;
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+}
