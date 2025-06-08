@@ -57,31 +57,53 @@ function initRegisterForm() {
 function initFillDetailsForm() {
   const form = document.querySelector(".fill-details-form form");
   if (!form) return;
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
     const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Token tidak ditemukan. Silakan login kembali.");
+      return (window.location.href = "/pages/login.html");
+    }
+
     const detail = {
       fullname: form.fullname.value,
       dob: form.dob.value,
-      gender: form.querySelector("input[name='gender']:checked").value,
+      gender: form.querySelector("input[name='gender']:checked")?.value || "",
       weight: parseFloat(form["current-weight"].value),
       goal: form.goal.value,
       height: parseFloat(form.height.value),
     };
 
-    const res = await fetch("http://localhost:3000/api/fill-details", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
-      body: JSON.stringify(detail),
-    });
+    try {
+      const res = await fetch("http://localhost:3000/api/fill-details", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(detail),
+      });
 
-    const data = await res.json();
-    if (res.ok) {
-      alert("Data berhasil disimpan!");
-      location.href = "dashboard.html";
-    } else alert("Gagal menyimpan: " + data.message);
+      const data = await res.json();
+      if (res.ok) {
+        alert("Data berhasil disimpan!");
+        window.location.href = "dashboard.html";
+      } else {
+        alert("Gagal menyimpan: " + data.message);
+        if (res.status === 401) {
+          localStorage.removeItem("token");
+          window.location.href = "/pages/login.html";
+        }
+      }
+    } catch (error) {
+      alert("Terjadi kesalahan saat mengirim data. Cek koneksi atau coba lagi.");
+      console.error("Fetch error:", error);
+    }
   });
 }
+
 
 async function fetchUserDetails() {
   const token = localStorage.getItem("token");

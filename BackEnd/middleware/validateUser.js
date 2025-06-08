@@ -11,7 +11,7 @@ const validateUser = async (request, h) => {
     const token = authHeader.replace('Bearer ', '');
     const decoded = Jwt.verify(token, JWT_SECRET);
     request.user = decoded;
-    return h.continue();
+    return h.continue;
   } catch (err) {
     return h.response({ status: 'fail', message: 'Invalid token' }).code(401).takeover();
   }
