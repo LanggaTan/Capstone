@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NutriTrack - NutriScan</title>
+    <link rel="stylesheet" href="../assets/css/hasil.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="nav">
+        <div class="logo">Nutri<span>Track🍎</span></div>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <nav class="nav-menu">
+          <a href="dashboard.html" class="nav-item">
+            <span class="nav-icon">📊</span> Dashboard
+          </a>
+          <a href="#" class="nav-item active">
+            <span class="nav-icon">🔍</span> NutriScan
+          </a>
+          <a href="profil.html" class="nav-item">
+            <span class="nav-icon">👤</span> Profil
+          </a>
+          <a href="logout.html" class="nav-item">
+            <span class="nav-icon">↩️</span>
+            Logout
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- NutriScan Result -->
+        <section class="upload-container">
+          <h2 class="nutriscan-header">NutriScan Result</h2>
+
+          <div class="main-upload-area" id="result-image-box">
+            <p class="upload-placeholder">Hasil gambar akan tampil di sini</p>
+          </div>
+
+          <div class="result-info">
+            <div class="result-field">
+              <label>Makanan:</label>
+              <input type="text" placeholder="Nasi Goreng" disabled />
+            </div>
+            <div class="result-field">
+              <label>Komponen:</label>
+              <input
+                type="text"
+                placeholder="Nasi, Telur, Minyak, Garam"
+                disabled
+              />
+            </div>
+            <div class="result-field">
+              <label>Nutrisi:</label>
+              <input
+                type="text"
+                placeholder="Karbohidrat, Protein, Lemak"
+                disabled
+              />
+            </div>
+            <div class="result-field">
+              <label>Kalori:</label>
+              <input type="text" placeholder="350 kkal" disabled />
+            </div>
+          </div>
+
+          <form action="rekomendasi.html" method="GET">
+            <!-- field input bisa hidden atau ditampilkan -->
+            <button type="submit" class="submit-btn">Rekomendasi</button>
+          </form>
+        </section>
+
+        <!-- Upload Form -->
+        <section class="upload-container" style="margin-top: 40px">
+          <div class="upload-section">
+            <h3>Product Image</h3>
+            <p class="upload-subtitle">Add the product main image</p>
+
+            <label
+              for="product-image"
+              class="additional-upload-area single-upload"
+            >
+              <div class="upload-icon">↑</div>
+              <p>Uanggah Satu Gambar Makanan</p>
+            </label>
+            <input
+              type="file"
+              id="product-image"
+              class="upload-input"
+              accept="image/*"
+            />
+          </div>
+        </section>
+
+        <!-- Submit Button -->
+        <form action="hasil.html" method="GET">
+          <!-- field input bisa hidden atau ditampilkan -->
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <div class="footer-logo">
+            <span>NutriTrack</span>
+            <span class="logo-icon">🍎</span>
+          </div>
+          <div class="social-icons">
+            <span class="social-icon">📘</span>
+            <span class="social-icon">📷</span>
+            <span class="social-icon">📧</span>
+          </div>
+          <p>© 2025 NutriTrack. All Rights Reserved.</p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
