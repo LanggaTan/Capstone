@@ -122,6 +122,7 @@ async function fetchUserDetails() {
     document.querySelector(".info-item:nth-child(6) p").textContent = goal;
   } else {
     alert("Data belum diisi!");
+    window.location.href = "/pages/fill-details.html";
   }
 }
 
