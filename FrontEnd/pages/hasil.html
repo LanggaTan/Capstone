@@ -1,59 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NutriTrack - NutriScan</title>
-    <link rel="stylesheet" href="../assets/css/hasil.css" />
-  </head>
-  <body>
-    <div id="header"></div>
 
-    <!-- Main Container -->
-    <div class="container">
-      <div id="sidebar"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriTrack - NutriScan</title>
+  <link rel="stylesheet" href="../assets/css/hasil.css" />
+  <!-- SweetAlert2 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-      <!-- Main Content -->
-      <main class="main-content">
-        <!-- NutriScan Result -->
-        <section class="upload-container">
-          <h2 class="nutriscan-header">NutriScan Result</h2>
+</head>
 
-          <div class="main-upload-area" id="result-image-box">
-            <!-- Gambar hasil deteksi -->
-            <img id="result-img" alt="Hasil Scan" style="max-width: 100%; display: none;" />
-            <p class="upload-placeholder" id="img-placeholder">Hasil gambar akan tampil di sini</p>
+<body>
+  <div id="header"></div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- NutriScan Result -->
+      <section class="upload-container">
+        <h2 class="nutriscan-header">NutriScan Result</h2>
+
+        <div class="main-upload-area" id="result-image-box">
+          <!-- Gambar hasil deteksi -->
+          <img id="result-img" alt="Hasil Scan" style="max-width: 100%; display: none;" />
+          <p class="upload-placeholder" id="img-placeholder">Hasil gambar akan tampil di sini</p>
+        </div>
+
+        <div class="result-info">
+          <div class="result-field">
+            <label for="food-name">Makanan:</label>
+            <input type="text" id="food-name" placeholder="Nama makanan" disabled />
           </div>
-
-          <div class="result-info">
-            <div class="result-field">
-              <label for="food-name">Makanan:</label>
-              <input type="text" id="food-name" placeholder="Nama makanan" disabled />
-            </div>
-            <div class="result-field">
-              <label for="total-calories">Total Kalori:</label>
-              <input type="text" id="total-calories" placeholder="0 kkal" disabled />
-            </div>
+          <div class="result-field">
+            <label for="total-calories">Total Kalori:</label>
+            <input type="text" id="total-calories" placeholder="0 kkal" disabled />
           </div>
+        </div>
 
-          <!-- Komponen Makanan -->
-          <div class="components-section">
-            <h4>Komponen & Kalori:</h4>
-            <ul class="components-list" id="components-list">
-              <!-- Akan diisi secara dinamis oleh JavaScript -->
-            </ul>
-          </div>
+        <!-- Komponen Makanan -->
+        <div class="components-section">
+          <h4>Komponen & Kalori:</h4>
+          <ul class="components-list" id="components-list">
+            <!-- Akan diisi secara dinamis oleh JavaScript -->
+          </ul>
+        </div>
 
-          <form action="rekomendasi.html" method="GET">
-            <!-- field input bisa hidden atau ditampilkan -->
-            <button type="submit" class="submit-btn">Rekomendasi</button>
-          </form>
-        </section>
+        <form action="rekomendasi.html" method="GET">
+          <!-- field input bisa hidden atau ditampilkan -->
+          <button type="submit" class="submit-btn">Rekomendasi</button>
+        </form>
+      </section>
 
-        <div id="footer"></div>
-        <script src="index.js"></script>
-      </main>
-    </div>
-    <script src="../script/main.js"></script>
-  </body>
+      <div id="footer"></div>
+      <script src="index.js"></script>
+    </main>
+  </div>
+  <script src="../script/main.js"></script>
+</body>
+
 </html>

@@ -1,62 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NutriTrack - NutriScan</title>
-    <link rel="stylesheet" href="../assets/css/profil.css" />
-  </head>
-  <body>
-    <div id="header"></div>
 
-    <!-- Main Container -->
-    <div class="container">
-      <div id="sidebar"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriTrack - NutriScan</title>
+  <link rel="stylesheet" href="../assets/css/profil.css" />
+  <!-- SweetAlert2 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-      <!-- Main Content -->
-      <main class="main-content">
-        <div class="profile-settings">
-          <!-- Header -->
-          <div class="profile-header">
-            <h1>Selamat Datang, Nama</h1>
+</head>
+
+<body>
+  <div id="header"></div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="profile-settings">
+        <!-- Header -->
+        <div class="profile-header">
+          <h1>Selamat Datang, Nama</h1>
+        </div>
+
+        <!-- Detail Profil -->
+        <div class="profile-details">
+          <!-- Foto Profil -->
+          <div class="profile-image">
+            <img src="../assets/images/a.jpg" alt="Foto Profil" />
           </div>
 
-          <!-- Detail Profil -->
-          <div class="profile-details">
-            <!-- Foto Profil -->
-            <div class="profile-image">
-              <img src="../assets/images/a.jpg" alt="Foto Profil" />
+          <!-- Info Profil -->
+          <div class="profile-info">
+            <div class="info-item">
+              <strong>Nama Lengkap:</strong>
+              <p>Nama</p>
             </div>
 
-            <!-- Info Profil -->
-            <div class="profile-info">
-              <div class="info-item">
-                <strong>Nama Lengkap:</strong>
-                <p>Nama</p>
-              </div>
+            <div class="info-item">
+              <strong>Nomor HP:</strong>
+              <p>0812-3456-7890</p>
+            </div>
 
-              <div class="info-item">
-                <strong>Nomor HP:</strong>
-                <p>0812-3456-7890</p>
-              </div>
+            <div class="info-item">
+              <strong>Email:</strong>
+              <p>Nama@gmail.com</p>
+            </div>
 
-              <div class="info-item">
-                <strong>Email:</strong>
-                <p>Nama@gmail.com</p>
-              </div>
-
-              <div class="info-item">
-                <strong>Password:</strong>
-                <p>********</p>
-              </div>
+            <div class="info-item">
+              <strong>Password:</strong>
+              <p>********</p>
             </div>
           </div>
         </div>
+      </div>
 
-        <div id="footer"></div>
-        <script src="index.js"></script>
-      </main>
-    </div>
-  </body>
-  <script src="../script/main.js"></script>
+      <div id="footer"></div>
+      <script src="index.js"></script>
+    </main>
+  </div>
+</body>
+<script src="../script/main.js"></script>
+
 </html>

@@ -1,52 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NutriTrack - NutriScan</title>
-    <link rel="stylesheet" href="../assets/css/food-scan.css" />
-  </head>
-  <body>
-    <div id="header"></div>
 
-    <!-- Main Container -->
-    <div class="container">
-      <div id="sidebar"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriTrack - NutriScan</title>
+  <link rel="stylesheet" href="../assets/css/food-scan.css" />
+  <!-- SweetAlert2 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-      <!-- Main Content -->
-      <div class="main-content">
-        <div class="upload-container">
-          <div class="upload-section">
-            <h3>Product Image</h3>
-            <p class="upload-subtitle">Add the product main image</p>
+</head>
 
-            <label
-              for="product-image"
-              class="additional-upload-area single-upload"
-            >
-              <div class="upload-icon">↑</div>
-              <p>Unggah Satu Gambar Makanan</p>
-              <img id="image-preview" src="" alt="Preview" style="display: none; max-width: 300px; margin-top: 10px;" />
-            </label>
-            <input
-              type="file"
-              id="product-image"
-              class="upload-input"
-              accept="image/*"
-            />
-          </div>
+<body>
+  <div id="header"></div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="upload-container">
+        <div class="upload-section">
+          <h3>Product Image</h3>
+          <p class="upload-subtitle">Add the product main image</p>
+
+          <label for="product-image" class="additional-upload-area single-upload">
+            <div class="upload-icon">↑</div>
+            <p>Unggah Satu Gambar Makanan</p>
+            <img id="image-preview" src="" alt="Preview" style="display: none; max-width: 300px; margin-top: 10px;" />
+          </label>
+          <input type="file" id="product-image" class="upload-input" accept="image/*" />
         </div>
-
-        <form action="hasil.html" method="GET">
-          <!-- field input bisa hidden atau ditampilkan -->
-          <button type="submit" class="submit-btn">Submit</button>
-        </form>
-
-        <div id="footer"></div>
-        <script src="index.js"></script>
       </div>
+
+      <form action="hasil.html" method="GET">
+        <!-- field input bisa hidden atau ditampilkan -->
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+
+      <div id="footer"></div>
+      <script src="index.js"></script>
     </div>
-    <script src="../script/upload.js"></script>
-    <script src="../script/main.js"></script>
-  </body>
+  </div>
+  <script src="../script/upload.js"></script>
+  <script src="../script/main.js"></script>
+</body>
+
 </html>
