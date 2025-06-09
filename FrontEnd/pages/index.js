@@ -39,8 +39,16 @@ loadComponent("sidebar", "sidebar.html", () => {
     logoutBtn.addEventListener("click", (e) => {
       e.preventDefault();
       localStorage.removeItem("token");
-      alert("Logout berhasil!");
-      window.location.href = "/pages/home.html";
+
+      Swal.fire({
+        icon: "success",
+        title: "Logout berhasil!",
+        timer: 1500,
+        showConfirmButton: false,
+        willClose: () => {
+          window.location.href = "/pages/home.html";
+        },
+      });
     });
   }
 });
