@@ -31,5 +31,18 @@ function setActiveSidebar() {
 
 // Load komponen
 loadComponent("header", "header.html");
-loadComponent("sidebar", "sidebar.html", setActiveSidebar);
+loadComponent("sidebar", "sidebar.html", () => {
+  setActiveSidebar();
+
+  const logoutBtn = document.getElementById("nav-logout");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("token");
+      alert("Logout berhasil!");
+      window.location.href = "/pages/home.html";
+    });
+  }
+});
+
 loadComponent("footer", "footer.html");

@@ -135,13 +135,3 @@ function calculateAge(dobString) {
   return age;
 }
 
-// Logout
-const logout = document.querySelector(".logout-link");
-if (logout) {
-  logout.addEventListener("click", (e) => {
-    e.preventDefault();
-    localStorage.removeItem("token");
-    alert("Logout berhasil!");
-    window.location.href = "/pages/home.html";
-  });
-}

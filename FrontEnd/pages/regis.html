@@ -1,91 +1,69 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Daftar - NutriTrack</title>
-    <link rel="stylesheet" href="../assets/css/regis.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <div class="logo">Nutri<span>Track🍎</span></div>
-      </nav>
-    </header>
 
-    <main>
-      <section class="signup-container">
-        <div class="signup-form">
-          <h2>Sign Up</h2>
-          <form>
-            <label for="name">Name</label>
-            <div class="input-group">
-              <input
-                type="text"
-                id="name"
-                placeholder="Nama Lengkap"
-                required
-              />
-              <i class="fas fa-user"></i>
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daftar - NutriTrack</title>
+  <link rel="stylesheet" href="../assets/css/regis.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
 
-            <label for="mobile">Phone Number</label>
-            <div class="input-group">
-              <input
-                type="tel"
-                id="mobile"
-                placeholder="Nomor Telepon"
-                required
-              />
-              <i class="fas fa-phone"></i>
-            </div>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Nutri<span>Track🍎</span></div>
+    </nav>
+  </header>
 
-            <label for="email">Email</label>
-            <div class="input-group">
-              <input
-                type="email"
-                id="email"
-                placeholder="abc@gmail.com"
-                required
-              />
-              <i class="fas fa-envelope"></i>
-            </div>
+  <main>
+    <section class="signup-container">
+      <div class="signup-form">
+        <h2>Sign Up</h2>
+        <form>
+          <label for="name">Name</label>
+          <div class="input-group">
+            <input type="text" id="name" placeholder="Nama Lengkap" required />
+            <i class="fas fa-user"></i>
+          </div>
 
-            <label for="password">Password</label>
-            <div class="input-group">
-              <input
-                type="password"
-                id="password"
-                placeholder="********"
-                required
-              />
-              <i class="fas fa-eye"></i>
-            </div>
+          <label for="mobile">Phone Number</label>
+          <div class="input-group">
+            <input type="tel" id="mobile" placeholder="Nomor Telepon" required />
+            <i class="fas fa-phone"></i>
+          </div>
 
-            <form action="fill-details.html" method="GET">
-              <button type="submit" class="sign-up-btn" formaction="fill-details.html"> Get Started </button>
-            </form>
+          <label for="email">Email</label>
+          <div class="input-group">
+            <input type="email" id="email" placeholder="abc@gmail.com" required />
+            <i class="fas fa-envelope"></i>
+          </div>
 
-            <p class="login-text">
-              Already have an account? <a href="login.html">Sign in</a>
-            </p>
+          <label for="password">Password</label>
+          <div class="input-group">
+            <input type="password" id="password" placeholder="********" required />
+            <i class="fas fa-eye"></i>
+          </div>
+
+          <form action="fill-details.html" method="GET">
+            <button type="submit" class="sign-up-btn" formaction="fill-details.html"> Get Started </button>
           </form>
-        </div>
 
-        <div class="signup-image">
-          <img src="../assets/images/gambardepan.jpg" alt="Gambar Depan" />
-        </div>
-      </section>
-    </main>
-  </body>
+          <p class="login-text">
+            Already have an account? <a href="login.html">Sign in</a>
+          </p>
+        </form>
+      </div>
+
+      <div class="signup-image">
+        <img src="../assets/images/gambardepan.jpg" alt="Gambar Depan" />
+      </div>
+    </section>
+  </main>
+  <script src="../script/main.js"></script>
+</body>
+
 </html>
