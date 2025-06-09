@@ -20,29 +20,27 @@
           <h2 class="nutriscan-header">NutriScan Result</h2>
 
           <div class="main-upload-area" id="result-image-box">
-            <p class="upload-placeholder">Hasil gambar akan tampil di sini</p>
+            <!-- Gambar hasil deteksi -->
+            <img id="result-img" alt="Hasil Scan" style="max-width: 100%; display: none;" />
+            <p class="upload-placeholder" id="img-placeholder">Hasil gambar akan tampil di sini</p>
           </div>
 
           <div class="result-info">
             <div class="result-field">
-              <label>Makanan:</label>
-              <input type="text" placeholder="Nasi Goreng" disabled />
+              <label for="food-name">Makanan:</label>
+              <input type="text" id="food-name" placeholder="Nama makanan" disabled />
             </div>
             <div class="result-field">
-              <label>Total Kalori:</label>
-              <input type="text" placeholder="350 kkal" disabled />
+              <label for="total-calories">Total Kalori:</label>
+              <input type="text" id="total-calories" placeholder="0 kkal" disabled />
             </div>
           </div>
 
           <!-- Komponen Makanan -->
           <div class="components-section">
             <h4>Komponen & Kalori:</h4>
-            <ul class="components-list">
-              <!-- Ini nanti akan di-generate lewat JavaScript -->
-              <li>Nasi - 200 kkal</li>
-              <li>Telur - 90 kkal</li>
-              <li>Minyak - 50 kkal</li>
-              <li>Garam - 10 kkal</li>
+            <ul class="components-list" id="components-list">
+              <!-- Akan diisi secara dinamis oleh JavaScript -->
             </ul>
           </div>
 

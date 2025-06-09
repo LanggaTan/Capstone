@@ -390,3 +390,14 @@ body {
   font-size: 14px;
   color: #333;
 }
+
+.components-list > li {
+  margin-bottom: 10px;
+}
+
+.nutrisi-list {
+  margin: 5px 0 0 20px;
+  padding-left: 15px;
+  list-style-type: circle;
+  font-size: 0.9em;
+}
