@@ -202,3 +202,45 @@ function calculateAge(dobString) {
   if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
   return age;
 }
+
+// main.js (untuk hasil.html)
+
+document.addEventListener("DOMContentLoaded", function () {
+  const result = JSON.parse(localStorage.getItem("scan_result"));
+
+  if (!result) {
+    Swal.fire("Oops", "Tidak ada hasil scan yang ditemukan", "error");
+    return;
+  }
+
+  // Tampilkan gambar hasil deteksi
+  const img = document.getElementById("result-img");
+  img.src = "http://localhost:5000" + result.image_url;
+  img.style.display = "block";
+
+  // Dummy kalori map
+  const kaloriMap = {
+    nasi: 175,
+    ayam: 200,
+    telur: 90,
+    tempe: 130,
+    tahu: 80,
+  };
+
+  let totalKalori = 0;
+  const ul = document.getElementById("components-list");
+
+  for (const [makanan, jumlah] of Object.entries(result.detected_objects)) {
+    const kalori = (kaloriMap[makanan.toLowerCase()] || 100) * jumlah;
+    totalKalori += kalori;
+
+    const li = document.createElement("li");
+    li.textContent = `${makanan} (${jumlah}x) - ${kalori} kkal`;
+    ul.appendChild(li);
+  }
+
+  // Tampilkan total
+  document.getElementById("food-name").value = Object.keys(result.detected_objects).join(", ");
+  document.getElementById("total-calories").value = `${totalKalori} kkal`;
+});
+
