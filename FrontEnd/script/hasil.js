@@ -1,57 +1,64 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const result = JSON.parse(localStorage.getItem("scan_result"));
+    const result = JSON.parse(localStorage.getItem("scan_result"));
 
-  if (!result || !result.nut_dict) {
-    Swal.fire("Error", "Data hasil tidak ditemukan", "error");
-    return;
-  }
+    if (!result) {
+        Swal.fire("Error", "Data hasil tidak ditemukan", "error");
+        return;
+    }
 
-  const resultImg = document.getElementById("result-img");
-  resultImg.src = result.image_url;
-  resultImg.style.display = "block";
-  document.getElementById("img-placeholder").style.display = "none";
+    const nutDict = result.nut_dict || result.nutrisi;
+    if (!nutDict) {
+        Swal.fire("Error", "Data nutrisi tidak ditemukan", "error");
+        return;
+    }
 
-  const foodNames = Object.keys(result.detected_objects).join(", ");
-  document.getElementById("food-name").value = foodNames;
+    // Tampilkan gambar
+    const resultImg = document.getElementById("result-img");
+    resultImg.src = result.image_url;
+    resultImg.style.display = "block";
+    document.getElementById("img-placeholder").style.display = "none";
 
-  const componentsList = document.getElementById("components-list");
-  componentsList.innerHTML = "";
+    const foodNames = result.food_names || Object.keys(result.detected_objects).join(", ");
+    document.getElementById("food-name").value = foodNames;
 
-  let totalKalori = 0;
+    const componentsList = document.getElementById("components-list");
+    componentsList.innerHTML = "";
 
-  for (const [name, nut] of Object.entries(result.nut_dict)) {
-    const energi = nut["Energi (Energy) (Kal)"] || 0;
-    const protein = nut["Protein (Protein) (g)"] || 0;
-    const lemak = nut["Lemak (Fat) (g)"] || 0;
-    const karbo = nut["Karbohidrat (CHO) (g)"] || 0;
-    const gram = nut["gram"] || 0;
+    let totalKalori = 0;
 
-    totalKalori += energi;
+    for (const [name, nut] of Object.entries(nutDict)) {
+        const energi = nut["Energi (Energy) (Kal)"] || 0;
+        const protein = nut["Protein (Protein) (g)"] || 0;
+        const lemak = nut["Lemak (Fat) (g)"] || 0;
+        const karbo = nut["Karbohidrat (CHO) (g)"] || 0;
+        const gram = nut["gram"] || 0;
 
-    const li = document.createElement("li");
-    li.innerHTML = `
-      <strong>${name}</strong><br>
-      Energi: ${energi.toFixed(2)} Kal<br>
-      Protein: ${protein.toFixed(2)} g<br>
-      Lemak: ${lemak.toFixed(2)} g<br>
-      Karbohidrat: ${karbo.toFixed(2)} g<br>
-      Berat: ${gram.toFixed(2)} gram
-    `;
-    componentsList.appendChild(li);
-  }
+        totalKalori += energi;
 
-  document.getElementById("total-calories").value = `${totalKalori.toFixed(2)} kal`;
+        const li = document.createElement("li");
+        li.innerHTML = `
+        <strong>${name}</strong><br>
+        Energi: ${energi.toFixed(2)} Kal<br>
+        Protein: ${protein.toFixed(2)} g<br>
+        Lemak: ${lemak.toFixed(2)} g<br>
+        Karbohidrat: ${karbo.toFixed(2)} g<br>
+        Berat: ${gram.toFixed(2)} gram
+        `;
+        componentsList.appendChild(li);
+    }
 
-  // ✅ Simpan ke riwayat DI DALAM block ini
-  const scanHistory = JSON.parse(localStorage.getItem("scan_history")) || [];
+    document.getElementById("total-calories").value = `${totalKalori.toFixed(2)} kal`;
 
-  scanHistory.push({
-    timestamp: new Date().toISOString(),
-    image_url: result.image_url,
-    food_names: foodNames,
-    energi: totalKalori,
-    nutrisi: result.nut_dict,
-  });
-
-  localStorage.setItem("scan_history", JSON.stringify(scanHistory));
+    // Simpan ke history jika hasil baru (bukan dari klik history)
+    if (!result.from_history) {
+        const scanHistory = JSON.parse(localStorage.getItem("scan_history")) || [];
+        scanHistory.push({
+            timestamp: new Date().toISOString(),
+            image_url: result.image_url,
+            food_names: foodNames,
+            energi: totalKalori,
+            nutrisi: nutDict,
+        });
+        localStorage.setItem("scan_history", JSON.stringify(scanHistory));
+    }
 });
