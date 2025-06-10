@@ -47,6 +47,9 @@ document.querySelector("form").addEventListener("submit", async function (e) {
       return;
     }
 
+    // Tambahkan base URL agar gambar bisa diakses
+    result.image_url = `http://localhost:5000${result.image_url}`;
+
     // Simpan hasil ke localStorage
     localStorage.setItem("scan_result", JSON.stringify(result));
     // Redirect ke hasil.html
