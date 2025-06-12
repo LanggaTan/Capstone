@@ -1,5 +1,5 @@
 # Capstone
-CC25 Project
+CC25-CF272 Project
 
 # NutriTrack 🥗
 
