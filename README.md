@@ -1,45 +1,39 @@
 # NutriTrack
 
-NutriTrack adalah aplikasi berbasis web yang membantu pengguna melacak informasi nutrisi dan makanan yang dikonsumsi menggunakan teknologi pemindaian gambar makanan berbasis Machine Learning.
+NutriTrack adalah aplikasi berbasis web yang membantu pengguna melacak asupan nutrisi harian dengan menggunakan teknologi deteksi makanan dari gambar berbasis Machine Learning.
 
 ---
 
 ## 🚀 Fitur Utama
 
-- Autentikasi Login & Register dengan JWT
-- Isi & Edit data personal (berat badan, tinggi badan, usia, tujuan)
-- Deteksi makanan berbasis gambar (Food Scan)
-- Estimasi kalori dari gambar makanan (Flask + YOLOv5)
-- Halaman profil dengan fitur update dan hapus akun
+- 📸 **Pindai Makanan dari Foto:** Pengguna dapat mengunggah gambar makanan, yang kemudian dianalisis oleh model Machine Learning untuk mengidentifikasi jenis makanan.
+- 🍱 **Informasi Nutrisi Otomatis:** Setelah makanan dikenali, sistem menampilkan estimasi kalori serta informasi nutrisi terkait berdasarkan jenis makanan yang terdeteksi.
+- 📊 **Catatan Nutrisi Harian:** Sistem mencatat hasil analisis makanan pengguna dalam log harian untuk membantu memantau total konsumsi kalori dan gizi per hari.
 
 ---
 
 ## 🧩 Struktur Proyek
 
 ```
-NutriTrack/
+Capstone/
 │
-├── backend/                 # Backend utama (Hapi.js)
+├── Backend/                 # Backend utama (Hapi.js)
 │   ├── index.js
 │   ├── routes/
 │   └── models/
 │
-├── flask-backend/          # Backend ML (Flask + YOLO)
-│   ├── app.py
-│   ├── static/model/od.pt
-│   └── ...
-│
-├── pages/                  # Frontend HTML
+├── Frontend/               # Frontend (HTML, CSS, JS)
 │   ├── login.html
 │   ├── register.html
 │   ├── profil.html
 │   ├── fill-details.html
 │   └── food-scan.html
 │
-├── assets/                 # Gambar, CSS
-│
-└── script/
-    └── main.js
+├── Testimg/                # Folder untuk Flask backend
+│   └── testimg/
+│       ├── app.py
+│       ├── static/model/od.pt
+│       └── ...
 ```
 
 ---
@@ -49,8 +43,8 @@ NutriTrack/
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/username/nutritrack.git
-cd nutritrack
+git clone https://github.com/LanggaTan/Capstone.git
+cd Capstone
 ```
 
 ---
@@ -58,19 +52,19 @@ cd nutritrack
 ### 2. Setup Backend Hapi.js (Autentikasi & Data User)
 
 ```bash
-cd backend
+cd Backend
 npm install
-node index.js
+npm start
 ```
 
-> Jalankan di `http://localhost:3000`
+> Server berjalan di `http://localhost:3000`
 
 ---
 
 ### 3. Setup Backend Flask (Deteksi Makanan)
 
 ```bash
-cd flask-backend
+cd Testimg/testimg
 
 # (Opsional tapi disarankan)
 python -m venv venv
@@ -81,25 +75,19 @@ pip install -r requirements.txt
 python app.py
 ```
 
-> Jalankan di `http://localhost:5000`
+> Server berjalan di `http://localhost:5000`
 
 ---
 
-### 4. Jalankan Frontend
-
-Buka file HTML dari folder `pages/` menggunakan Live Server (VS Code) atau langsung klik file `.html`:
-
-Contoh: `pages/login.html`
-
----
-
-## 📸 Cara Menggunakan Fitur Food Scan
+## 📸 Cara Menggunakan Fitur Scan Makanan
 
 1. Login terlebih dahulu.
 2. Akses halaman `food-scan.html`
-3. Unggah gambar makanan.
-4. Klik **"Scan"**
-5. Gambar dikirim ke server Flask, dianalisis oleh YOLOv5, dan hasilnya ditampilkan di layar.
+3. Unggah gambar makanan dari galeri atau kamera.
+4. Klik tombol **"Scan"**
+5. Gambar dikirim ke backend Flask, dideteksi menggunakan model YOLOv5
+6. Sistem akan menampilkan jenis makanan dan estimasi kalori.
+7. Hasilnya akan dicatat dalam log nutrisi harian pengguna.
 
 ---
 
@@ -121,7 +109,7 @@ Contoh: `pages/login.html`
 
 | Endpoint     | Method | Keterangan                            |
 |--------------|--------|----------------------------------------|
-| `/predict`   | POST   | Terima gambar dan kembalikan hasil deteksi dan estimasi kalori |
+| `/predict`   | POST   | Terima gambar dan kembalikan hasil deteksi + estimasi kalori |
 
 ---
 
@@ -146,21 +134,22 @@ Contoh: `pages/login.html`
 
 ## 🧠 Catatan Teknis
 
-- Model YOLOv5 disimpan di `flask-backend/static/model/od.pt`
-- Hasil deteksi dikirim sebagai gambar base64 + label kalori
-- Kalori per makanan didefinisikan secara manual di frontend (`script/main.js`)
-- Token JWT disimpan di browser menggunakan `localStorage`
+- Model deteksi makanan menggunakan YOLOv5 disimpan di `Testimg/testimg/static/model/od.pt`
+- Deteksi makanan akan mengembalikan gambar hasil anotasi + informasi kalori makanan.
+- Estimasi kalori diatur manual dalam frontend (`main.js`)
+- Token JWT disimpan di `localStorage` untuk akses endpoint yang membutuhkan otorisasi
 
 ---
 
 ## 👨‍💻 Pengembang
 
-Dikembangkan oleh **[Nama Kamu]**  
-Untuk keperluan **[Mata Kuliah / Proyek Tugas Akhir / Pribadi]**
+Proyek ini dikembangkan oleh **Kelompok Capstone CC25**  
+Sebagai bagian dari tugas akhir Capstone Project
 
 ---
 
 ## 📝 Lisensi
 
-Proyek ini bebas digunakan untuk tujuan pembelajaran dan pengembangan. Untuk penggunaan komersial, mohon hubungi pengembang terlebih dahulu.
+Proyek ini bebas digunakan untuk tujuan pembelajaran dan penelitian.  
+Untuk penggunaan komersial, harap hubungi pengembang terlebih dahulu.
 
