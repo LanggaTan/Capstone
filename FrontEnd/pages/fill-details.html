@@ -72,6 +72,48 @@
   </main>
   <script src="index.js"></script>
   <script src="../script/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      try {
+        const token = localStorage.getItem("token"); // Ambil token dari localStorage
+        if (!token) return;
+
+        const response = await fetch("http://localhost:3000/api/user-details", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          console.log("No details yet");
+          return;
+        }
+
+        const result = await response.json();
+        const data = result.data;
+
+        // Isi form
+        document.getElementById("fullname").value = data.fullname || "";
+        document.getElementById("dob").value = data.dob || "";
+        document.getElementById("current-weight").value = data.weight || "";
+        document.getElementById("height").value = data.height || "";
+        document.getElementById("goal").value = data.goal || "";
+
+        // Gender (radio)
+        if (data.gender === "Male") {
+          document.getElementById("male").checked = true;
+        } else if (data.gender === "Female") {
+          document.getElementById("female").checked = true;
+        }
+
+      } catch (error) {
+        console.error("Failed to fetch user details", error);
+      }
+    });
+  </script>
+
+
+
 </body>
 
 </html>

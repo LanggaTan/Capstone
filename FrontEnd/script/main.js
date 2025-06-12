@@ -26,12 +26,15 @@ document.addEventListener("DOMContentLoaded", () => {
   initLoginForm();
   initRegisterForm();
   initFillDetailsForm();
+
   if (page === "dashboard.html") fetchUserDetails();
+  if (page === "hasil.html") showScanResult();
 });
 
 function initLoginForm() {
   const form = document.querySelector(".login-form form");
   if (!form) return;
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const email = form.email.value;
@@ -42,6 +45,7 @@ function initLoginForm() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: email, password }),
     });
+
     const data = await res.json();
     if (res.ok) {
       localStorage.setItem("token", data.token);
@@ -66,9 +70,11 @@ function initLoginForm() {
 function initRegisterForm() {
   const form = document.querySelector(".signup-form form");
   if (!form) return;
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const { name, mobile, email, password } = form;
+
     const res = await fetch("http://localhost:3000/api/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -79,6 +85,7 @@ function initRegisterForm() {
         password: password.value,
       }),
     });
+
     const data = await res.json();
     if (res.ok) {
       Swal.fire({
@@ -103,9 +110,20 @@ function initFillDetailsForm() {
   const form = document.querySelector(".fill-details-form form");
   if (!form) return;
 
+  const stored = localStorage.getItem("editDetails");
+  if (stored) {
+    const data = JSON.parse(stored);
+    form.fullname.value = data.fullname || "";
+    form["current-weight"].value = data.weight || "";
+    form.height.value = data.height || "";
+    form.goal.value = data.goal || "";
+
+    if (data.gender === "Male") form.male.checked = true;
+    else if (data.gender === "Female") form.female.checked = true;
+  }
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-
     const token = localStorage.getItem("token");
     if (!token) {
       Swal.fire({
@@ -120,7 +138,7 @@ function initFillDetailsForm() {
 
     const detail = {
       fullname: form.fullname.value,
-      dob: form.dob.value,
+      dob: form.dob?.value,
       gender: form.querySelector("input[name='gender']:checked")?.value || "",
       weight: parseFloat(form["current-weight"].value),
       goal: form.goal.value,
@@ -145,6 +163,7 @@ function initFillDetailsForm() {
           timer: 1500,
           showConfirmButton: false,
         }).then(() => {
+          localStorage.removeItem("editDetails");
           window.location.href = "dashboard.html";
         });
       } else {
@@ -174,8 +193,8 @@ async function fetchUserDetails() {
   const res = await fetch("http://localhost:3000/api/user-details", {
     headers: { Authorization: `Bearer ${token}` },
   });
-  const result = await res.json();
 
+  const result = await res.json();
   if (result.status === "success") {
     const { fullname, dob, gender, weight, goal, height } = result.data;
     document.querySelector(".info-item:nth-child(1) p").textContent = fullname;
@@ -203,9 +222,7 @@ function calculateAge(dobString) {
   return age;
 }
 
-// main.js (untuk hasil.html)
-
-document.addEventListener("DOMContentLoaded", function () {
+function showScanResult() {
   const result = JSON.parse(localStorage.getItem("scan_result"));
 
   if (!result) {
@@ -213,12 +230,10 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  // Tampilkan gambar hasil deteksi
   const img = document.getElementById("result-img");
   img.src = "http://localhost:5000" + result.image_url;
   img.style.display = "block";
 
-  // Dummy kalori map
   const kaloriMap = {
     nasi: 175,
     ayam: 200,
@@ -239,8 +254,6 @@ document.addEventListener("DOMContentLoaded", function () {
     ul.appendChild(li);
   }
 
-  // Tampilkan total
   document.getElementById("food-name").value = Object.keys(result.detected_objects).join(", ");
   document.getElementById("total-calories").value = `${totalKalori} kkal`;
-});
-
+}

@@ -76,7 +76,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         tbody.appendChild(row);
     });
-
-
-
 });
+
+// Tambahkan di paling bawah dashboard.js
+document.getElementById("edit-btn").addEventListener("click", () => {
+    window.location.href = "fill-details.html";
+});
+
+
+
